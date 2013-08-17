@@ -113,6 +113,7 @@
 		 * @since   0.1
 		 */
 		public function add_preview_message() {
+			$screen = get_current_screen();
 
 			// Make this filterable of course
 			$content = array(
@@ -126,10 +127,12 @@
 			// Output our HTML and content
 			$output = '<div class="cg-hpl-preview-wrapper">';
 				$output .= '<p><strong>' . wp_kses_post( $content['title'] ) . '</strong> - ' . wp_kses_post( $content['text'] ) . ' ';
-				$output .= '<a href="#" class="show-post-locker-btn ' . esc_attr( $content['btn-clas'] ) . '">' . wp_kses_post( $content['btn-text'] ) . '</a></p>';
+				$output .= '<a href="#" class="show-post-locker-btn ' . esc_attr( $content['btn-class'] ) . '">' . wp_kses_post( $content['btn-text'] ) . '</a></p>';
 			$output .= '</div>';
 
-			echo $output;
+			// Make sure we are viewing the post.php page...
+			if ( $screen->id == 'post' )
+				echo $output;
 		}
 	}
 
