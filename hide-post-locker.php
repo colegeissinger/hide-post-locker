@@ -2,7 +2,7 @@
 	/*
 		Plugin Name: Hide Post Locker
 		Plugin URI: http://www.colegeissinger.com
-		Description: This little script gives the option to view a locked posts edit screen.
+		Description: Have the option to view a locked post's edit screen.
 		Version: 0.1
 		Author: Cole Geissinger
 		Author URI: http://www.colegeissinger.com
