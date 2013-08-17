@@ -25,10 +25,10 @@ This section describes how to install the plugin and get it working.
 ## Screenshots ##
 
 ### 1. The post locker screen with the link to hide the window. ###
-![1. The post locker screen with the link to hide the window.](http://s.wordpress.org/extend/plugins/hide-post-locker/screenshot-1.png)
+![1. The post locker screen with the link to hide the window.](http://cl.ly/image/1B3I1p0D3x1A)
 
 ### 2. The message bar at the bottom of the window when preview the edit window. ###
-![2. The message bar at the bottom of the window when preview the edit window.](http://s.wordpress.org/extend/plugins/hide-post-locker/screenshot-2.png)
+![2. The message bar at the bottom of the window when preview the edit window.](http://cl.ly/image/0n130C1S3K1a)
 
 
 ## Changelog ##
