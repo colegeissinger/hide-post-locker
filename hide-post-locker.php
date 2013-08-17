@@ -71,7 +71,7 @@
 				return;
 
 			// Load our styles
-			wp_enqueue_style( 'geissinger-hpl-main-styles', plugins_url( 'css/hide-post-locker.css', __FILE__ ) );
+			wp_enqueue_style( 'geissinger-hpl-main-styles', plugins_url( 'css/hide-post-locker.css', __FILE__ ), null, $this->version );
 
 			// Check if jQuery is already loaded. If not, load it! We'll just load WP's stock jQuery script.
 			if ( ! wp_script_is( 'jquery' ) )
