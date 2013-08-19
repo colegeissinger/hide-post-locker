@@ -54,6 +54,10 @@
 
 			// Add in a custom box that displays at the top so we know we are view previewing the editor
 			add_action( 'admin_footer', array( $this, 'add_preview_message' ) );
+
+			// Filter our plugins text if we set it in the admin area :3
+			add_filter( 'geissinger-hpl-locker-messages', array( $this, 'cg_hpl_override_locker_message' ) );
+			add_filter( 'geissinger-hpl-preview-messages', array( $this, 'cg_hpl_override_preview_message' ) );
 		}
 
 
@@ -97,7 +101,7 @@
 				'btn-text' 	=> __( 'Hide this window', 'geissinger-hpl' ),
 				'btn-class' => '',
 			);
-			$options = apply_filters( 'geissinger-hpl-locker-content', $content );
+			$content = apply_filters( 'geissinger-hpl-locker-messages', $content );
 
 			// Sanitize and display!
 			echo wp_kses_post( $content['text'] ) . ' <a href="#" class="hide-post-locker-btn ' . esc_attr( $content['btn-class'] ) . '">' . wp_kses_post( $content['btn-text'] ) .'</a>';
@@ -117,12 +121,12 @@
 
 			// Make this filterable of course
 			$content = array(
-				'title' => __( 'Previewing Post Editor', 'geissinger-hpl' ),
-				'text' => __( 'Any edits made will <strong>not</strong> be saved as another user is currently editing.', 'geissinger-hpl' ),
-				'btn-text' => __( 'Display Post Locker', 'geissinger-hpl' ),
+				'title' 	=> __( 'Previewing Post Editor', 'geissinger-hpl' ),
+				'text' 		=> __( 'Any edits made will <strong>not</strong> be saved as another user is currently editing.', 'geissinger-hpl' ),
+				'btn-text' 	=> __( 'Display Post Locker', 'geissinger-hpl' ),
 				'btn-class' => '',
 			);
-			$content = apply_filters( 'geissinger-hpl-preview-message', $content );
+			$content = apply_filters( 'geissinger-hpl-preview-messages', $content );
 
 			// Output our HTML and content
 			$output = '<div class="cg-hpl-preview-wrapper">';
@@ -134,6 +138,83 @@
 			if ( $screen->id == 'post' )
 				echo $output;
 		}
+
+
+		/**
+		 * Returns our custom text set in the admin area
+		 * @return Array/Boolean
+		 *
+		 * @version 0.1
+		 * @since   0.1
+		 */
+		public function cg_hpl_get_custom_options() {
+
+			// Return our custom text options
+			$options = get_option( 'geissinger_hpl_options' );
+
+			if ( ! empty( $options ) ) {
+				return $options;
+			} else {
+				return false;
+			}
+		}
+
+
+		/**
+		 * Takes the text entered into the admin area and replaces the standard text with the custom :3
+		 * @param  Array $content The array that contains the default content
+		 * @return Array
+		 *
+		 * @version 0.1
+		 * @since   0.1
+		 */
+		public function cg_hpl_override_locker_message( $content ) {
+
+			// Get our custom text
+			$options = $this->cg_hpl_get_custom_options();
+
+			// Check that $options are there.
+			if ( $options == false )
+				return;
+
+			// Update our array if we have setup new text
+			$content = array( 
+				'text' => ( ! empty( $options['message-text'] ) ? wp_kses_post( $options['message-text'] ) : $content['text'] ),
+				'btn-text' => ( ! empty( $options['message-btn-text'] ) ? wp_kses_post( $options['message-btn-text'] ) : $content['btn-text'] ),
+				'btn-class' => ( ! empty( $options['message-btn-class'] ) ? esc_attr( $options['message-btn-class'] ) : $content['btn-class'] ),
+			);
+
+			return $content;
+		}
+
+
+		/**
+		 * Takes the text entered into the admin area and replaces the standard text with the custom :3
+		 * @param  Array $content The array that contains the default content
+		 * @return Array
+		 *
+		 * @version 0.1
+		 * @since   0.1
+		 */
+		public function cg_hpl_override_preview_message( $content ) {
+
+			// Get our custom text
+			$options = $this->cg_hpl_get_custom_options();
+
+			// Check that $options are there.
+			if ( $options == false )
+				return;
+
+			// Update our array if we have setup new text
+			$content = array( 
+				'title' => ( ! empty( $options['preview-title'] ) ? wp_kses_post( $options['preview-title'] ) : $content['title'] ), 
+				'text' => ( ! empty( $options['preview-text'] ) ? wp_kses_post( $options['preview-text'] ) : $content['text'] ),
+				'btn-text' => ( ! empty( $options['preview-btn-text'] ) ? wp_kses_post( $options['preview-btn-text'] ) : $content['btn-text'] ),
+				'btn-class' => ( ! empty( $options['preview-btn-class'] ) ? esc_attr( $options['preview-btn-class'] ) : $content['btn-class'] ),
+			);
+
+			return $content;
+		}
 	}
 
 	$geissinger_hpl = new CG_Hide_Post_Locker();
@@ -141,4 +222,5 @@
 	
 	// Load our admin page so users can customize some things
 	include_once( 'admin/post-locker-admin-page.php' );
+
 		
