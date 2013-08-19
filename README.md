@@ -25,19 +25,19 @@ This section describes how to install the plugin and get it working.
 ## Screenshots ##
 
 ### The post locker screen with the link to hide the window. ###
-![1. The post locker screen with the link to hide the window.](http://s.wordpress.org/extend/plugins/hide-post-locker/screenshot-1.png)
+![1. The post locker screen with the link to hide the window.](http://cl.ly/image/1B3I1p0D3x1A/screenshot-1.png)
 
 ### The message bar at the bottom of the window when preview the edit window. ###
-![2. The message bar at the bottom of the window when preview the edit window.](http://s.wordpress.org/extend/plugins/hide-post-locker/screenshot-2.png)
+![2. The message bar at the bottom of the window when preview the edit window.](http://cl.ly/image/0n130C1S3K1a/screenshot-2.png)
 
 ### Custom admin area to change the default text! ###
-![3. Custom admin area to change the default text!](http://s.wordpress.org/extend/plugins/hide-post-locker/screenshot-3.png)
+![3. Custom admin area to change the default text!](http://cl.ly/image/3g0D3O0T1T3P/screenshot-3.png)
 
 ### Results of our text entered into the "Message Window" area in the admin options. ###
-![4. Results of our text entered into the "Message Window" area in the admin options.](http://s.wordpress.org/extend/plugins/hide-post-locker/screenshot-4.png)
+![4. Results of our text entered into the "Message Window" area in the admin options.](http://cl.ly/image/3m1V2A1d2t0s/screenshot-4.png)
 
 ### Results of our text entered into the "Preview Message Box" area in the admin options. ###
-![5. Results of our text entered into the "Preview Message Box" area in the admin options.](http://s.wordpress.org/extend/plugins/hide-post-locker/screenshot-5.png)
+![5. Results of our text entered into the "Preview Message Box" area in the admin options.](http://cl.ly/image/3v0R2C2T1G1P/screenshot-5.png)
 
 
 ## Changelog ##
